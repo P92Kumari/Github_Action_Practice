@@ -1,1 +1,37 @@
+name: My First GitHub Actions Workflow
 
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  demo-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Welcome Message
+        run: echo "Welcome to GitHub Actions!"
+
+      - name: Display Date
+        run: date
+
+      - name: Display Current Directory
+        run: pwd
+
+      - name: List Files
+        run: ls -la
+
+      - name: Display Runner Information
+        run: |
+          echo "Operating System: $RUNNER_OS"
+          echo "Architecture: $RUNNER_ARCH"
+          echo "Runner Name: $RUNNER_NAME"
+
+      - name: Print Environment Variables
+        run: env
+
+      - name: Success Message
+        run: echo "Workflow completed successfully!"
