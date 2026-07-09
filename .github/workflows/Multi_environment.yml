@@ -1,0 +1,52 @@
+name: Multi Environment Deployment
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dev:
+    name: Deploy to Dev
+    runs-on: ubuntu-latest
+
+    environment: dev
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Dev
+        run: |
+          echo "Starting deployment to DEV..."
+          sleep 5
+          echo "Application deployed to DEV."
+
+  test:
+    name: Deploy to Test
+    needs: dev
+    runs-on: ubuntu-latest
+
+    environment: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Test
+        run: |
+          echo "Starting deployment to TEST..."
+          sleep 5
+          echo "Application deployed to TEST."
+
+  prod:
+    name: Deploy to Production
+    needs: test
+    runs-on: ubuntu-latest
+
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Production
+        run: |
+          echo "Starting deployment to PRODUCTION..."
+          sleep 5
+          echo "Application deployed to PRODUCTION."
