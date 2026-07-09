@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "Hello from Pihu Script!"
-echo "Current User: $(whoami)"
 echo "Current Directory: $(pwd)"
 echo "Current Date: $(date)"
 echo "Kernel Version: $(uname -r)"
